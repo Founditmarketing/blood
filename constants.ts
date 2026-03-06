@@ -10,20 +10,20 @@ export const AUTHOR_AKA = "Vernon Daniel Blood";
  */
 const proxy = (url: string) => `https://images.weserv.nl/?url=${encodeURIComponent(url)}&default=https://via.placeholder.com/400x600?text=Book+Cover`;
 
-const SPIRITUAL_DEV_IMG = "/images/spiritual_dev_cover_1772756241631.png";
-const SPIRITUAL_DEV_INT1 = "/images/spiritual_dev_int1_1772756293942.png";
-const SPIRITUAL_DEV_INT2 = "/images/spiritual_dev_int2_1772756306661.png";
+const SPIRITUAL_DEV_IMG = "/images/book1.PNG";
+const SPIRITUAL_DEV_INT1 = "/images/book2.PNG";
+const SPIRITUAL_DEV_INT2 = "/images/IMG_8426.PNG"; // Using available generic interior for now
 
-const MOMS_HISTORY_IMG = "/images/moms_history_cover_1772756253680.png";
-const MOMS_HISTORY_INT1 = "/images/moms_history_int1_1772756320268.png";
-const MOMS_HISTORY_INT2 = "/images/moms_history_int2_1772756334828.png";
+const MOMS_HISTORY_IMG = "/images/book3.PNG";
+const MOMS_HISTORY_INT1 = "/images/book3.PNG"; // Using cover as interior for now
+const MOMS_HISTORY_INT2 = "/images/IMG_8426.PNG";
 
-const DADS_HISTORY_IMG = "/images/dads_history_cover_1772756265645.png";
-const DADS_HISTORY_INT1 = "/images/dads_history_int1_1772756347232.png";
-const DADS_HISTORY_INT2 = "/images/dads_history_int2_1772756359976.png";
+const DADS_HISTORY_IMG = "/images/book4.PNG";
+const DADS_HISTORY_INT1 = "/images/book4.PNG"; // Using cover as interior for now
+const DADS_HISTORY_INT2 = "/images/IMG_8426.PNG";
 
 // Master author portrait
-export const AUTHOR_PHOTO = "/images/author_photo_1772756372699.png";
+export const AUTHOR_PHOTO = "/images/author main image.PNG";
 export const AMAZON_STORE_URL = "https://www.amazon.com/stores/Vernon-Daniel-Blood/author/B0DP1R44MX";
 export const AMAZON_ABOUT_URL = "https://www.amazon.com/stores/author/B0DP1R44MX/about";
 
@@ -140,7 +140,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Inside 'Mom's History': Legacy Prompts",
     date: "January 15, 2024",
     category: "Journaling",
-    image: MOMS_HISTORY_IMG, 
+    image: MOMS_HISTORY_IMG,
     excerpt: "Exploring the specific prompts within the Mom's History journal designed to capture the essence of motherhood."
   }
 ];
