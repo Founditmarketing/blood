@@ -1,7 +1,10 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+import GeminiChat from './components/GeminiChat';
 
 // Lazy loaded views for Code Splitting via React.lazy
 const ViewHome = lazy(() => import('./views/ViewHome'));
@@ -10,9 +13,8 @@ const ViewBookDetail = lazy(() => import('./views/ViewBookDetail'));
 const ViewAbout = lazy(() => import('./views/ViewAbout'));
 const ViewJournal = lazy(() => import('./views/ViewJournal'));
 const ViewContact = lazy(() => import('./views/ViewContact'));
-const GeminiChat = lazy(() => import('./components/GeminiChat'));
 
-export type ViewType = 'home' | 'books' | 'book-detail' | 'about' | 'blog' | 'contact' | 'ai-curator';
+export type ViewType = 'home' | 'books' | 'book-detail' | 'about' | 'blog' | 'contact';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>('home');
@@ -48,8 +50,6 @@ const App: React.FC = () => {
         return <ViewJournal key="blog" onNavigate={navigateTo} />;
       case 'contact':
         return <ViewContact key="contact" onNavigate={navigateTo} />;
-      case 'ai-curator':
-        return <div key="chat" className="pt-32 pb-20"><GeminiChat /></div>;
       default:
         return <ViewHome key="home-default" onNavigate={navigateTo} />;
     }
@@ -63,22 +63,27 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fdfcf8] relative">
-      {/* Cinematic Film Grain Overlay added here */}
-      <div className="film-grain"></div>
+    <HelmetProvider>
+      <div className="min-h-screen flex flex-col bg-[#fdfcf8] relative">
+        {/* Cinematic Film Grain Overlay added here */}
+        <div className="film-grain"></div>
 
-      <Header currentView={currentView} onNavigate={navigateTo} />
+        <Header currentView={currentView} onNavigate={navigateTo} />
 
-      <main className="flex-grow">
-        <Suspense fallback={<FallbackLoader />}>
-          <AnimatePresence mode="wait">
-            {renderView()}
-          </AnimatePresence>
-        </Suspense>
-      </main>
+        <main className="flex-grow">
+          <Suspense fallback={<FallbackLoader />}>
+            <AnimatePresence mode="wait">
+              {renderView()}
+            </AnimatePresence>
+          </Suspense>
+        </main>
 
-      <Footer onNavigate={navigateTo} />
-    </div>
+        {/* Globally Available AI Concierge */}
+        <GeminiChat />
+
+        <Footer onNavigate={navigateTo} />
+      </div>
+    </HelmetProvider>
   );
 };
 

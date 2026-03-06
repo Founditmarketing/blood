@@ -5,6 +5,7 @@ import Recommendations from '../components/Recommendations';
 import Blog from '../components/Blog';
 import { BOOKS, AUTHOR_PHOTO, AUTHOR_AKA, BIO } from '../constants';
 import { ViewType } from '../App';
+import SEO from '../components/SEO';
 
 interface ViewHomeProps {
   onNavigate: (view: ViewType, params?: any) => void;
@@ -26,6 +27,7 @@ const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
       animate="animate"
       exit="exit"
     >
+      <SEO />
       <Hero onNavigate={onNavigate} />
 
       {/* Latest Release Spotlight */}

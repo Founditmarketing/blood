@@ -2,6 +2,7 @@
 import React from 'react';
 import { RECOMMENDATIONS, BOOKS, AUTHOR_AKA, AUTHOR_PHOTO } from '../constants';
 import { ViewType } from '../App';
+import TiltCard from './TiltCard';
 
 interface RecommendationsProps {
   onNavigate: (view: ViewType, params?: any) => void;
@@ -14,9 +15,9 @@ const Recommendations: React.FC<RecommendationsProps> = ({ onNavigate }) => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-block p-1 mb-6">
-            <img 
-              src={AUTHOR_PHOTO} 
-              alt={AUTHOR_AKA} 
+            <img
+              src={AUTHOR_PHOTO}
+              alt={AUTHOR_AKA}
               referrerPolicy="no-referrer"
               loading="lazy"
               className="w-20 h-20 rounded-full border-2 border-white shadow-lg mx-auto object-cover"
@@ -33,15 +34,15 @@ const Recommendations: React.FC<RecommendationsProps> = ({ onNavigate }) => {
 
             return (
               <div key={rec.id} className="bg-white p-8 border border-stone-200 rounded shadow-sm hover:shadow-md transition-shadow flex gap-8 items-start">
-                <div className="w-32 flex-shrink-0 shadow-xl border border-stone-100 rotate-1">
-                  <img 
-                    src={book.coverImage} 
-                    alt={book.title} 
+                <TiltCard intensity={15} className="w-32 flex-shrink-0 shadow-xl border border-stone-100 rotate-1">
+                  <img
+                    src={book.coverImage}
+                    alt={book.title}
                     referrerPolicy="no-referrer"
                     loading="lazy"
-                    className="w-full h-auto" 
+                    className="w-full h-auto drop-shadow-md"
                   />
-                </div>
+                </TiltCard>
                 <div>
                   <h4 className="text-stone-900 font-serif font-black italic mb-3 leading-tight">
                     {rec.question}

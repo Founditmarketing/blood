@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BLOG_POSTS } from '../constants';
 import { ViewType } from '../App';
+import SEO from '../components/SEO';
 
 interface ViewJournalProps {
   onNavigate: (view: ViewType, params?: any) => void;
@@ -25,6 +26,7 @@ const ViewJournal: React.FC<ViewJournalProps> = ({ onNavigate }) => {
       exit="exit"
       className="bg-[#fdfcf8] min-h-screen pt-32 pb-24"
     >
+      <SEO title="Journal & Insights" description="Read Daniel Blood's latest essays and reflections on faith, history, and family legacy." />
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-24">

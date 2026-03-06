@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { AUTHOR_NAME, AUTHOR_PHOTO, BIO, AUTHOR_AKA } from '../constants';
 import { ViewType } from '../App';
+import SEO from '../components/SEO';
 
 interface ViewAboutProps {
   onNavigate: (view: ViewType, params?: any) => void;
@@ -22,6 +23,7 @@ const ViewAbout: React.FC<ViewAboutProps> = ({ onNavigate }) => {
       exit="exit"
       className="pt-32 pb-24 bg-[#fdfcf8] min-h-screen"
     >
+      <SEO title={`About ${AUTHOR_NAME}`} description={BIO.substring(0, 160)} />
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center mb-32">
           {/* Author Photo Column */}

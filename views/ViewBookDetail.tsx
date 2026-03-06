@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BOOKS, REVIEWS } from '../constants';
 import { ViewType } from '../App';
+import SEO from '../components/SEO';
 
 interface ViewBookDetailProps {
   bookId: string;
@@ -10,13 +11,14 @@ interface ViewBookDetailProps {
 const ViewBookDetail: React.FC<ViewBookDetailProps> = ({ bookId, onNavigate }) => {
   const book = BOOKS.find(b => b.id === bookId);
   const [activeImg, setActiveImg] = useState(0);
-  
+
   if (!book) return <div className="pt-40 text-center">Book not found.</div>;
 
   const bookReviews = REVIEWS.filter(r => r.bookId === bookId);
 
   return (
     <div className="pt-32 pb-24">
+      <SEO title={book.title} description={book.description.substring(0, 160)} image={book.images[0]} />
       <div className="container mx-auto px-6">
         {/* Breadcrumbs */}
         <nav className="mb-12 flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-stone-400">
@@ -32,28 +34,26 @@ const ViewBookDetail: React.FC<ViewBookDetailProps> = ({ bookId, onNavigate }) =
               <div className="bg-white p-8 md:p-12 border border-stone-100 shadow-2xl relative overflow-hidden group">
                 <div className="aspect-[3/4] flex items-center justify-center relative">
                   {book.images.map((img, idx) => (
-                    <img 
+                    <img
                       key={idx}
-                      src={img} 
-                      alt={`${book.title} view ${idx + 1}`} 
+                      src={img}
+                      alt={`${book.title} view ${idx + 1}`}
                       referrerPolicy="no-referrer"
-                      className={`absolute max-h-full object-contain drop-shadow-2xl transition-all duration-700 ${
-                        idx === activeImg ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-                      }`}
+                      className={`absolute max-h-full object-contain drop-shadow-2xl transition-all duration-700 ${idx === activeImg ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                        }`}
                     />
                   ))}
                 </div>
-                
+
                 {/* Carousel Navigation */}
                 {book.images.length > 1 && (
                   <div className="mt-10 flex justify-center gap-3">
                     {book.images.map((img, idx) => (
-                      <button 
+                      <button
                         key={idx}
                         onClick={() => setActiveImg(idx)}
-                        className={`w-16 h-20 border-2 transition-all overflow-hidden ${
-                          activeImg === idx ? 'border-amber-500 scale-110' : 'border-stone-100 grayscale hover:grayscale-0'
-                        }`}
+                        className={`w-16 h-20 border-2 transition-all overflow-hidden ${activeImg === idx ? 'border-amber-500 scale-110' : 'border-stone-100 grayscale hover:grayscale-0'
+                          }`}
                       >
                         <img src={img} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       </button>
@@ -61,11 +61,11 @@ const ViewBookDetail: React.FC<ViewBookDetailProps> = ({ bookId, onNavigate }) =
                   </div>
                 )}
               </div>
-              
+
               <div className="mt-8 flex flex-col gap-4">
-                <a 
-                  href={book.amazonLink} 
-                  target="_blank" 
+                <a
+                  href={book.amazonLink}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-5 bg-amber-500 text-stone-900 text-[10px] font-black uppercase tracking-[0.3em] text-center hover:bg-amber-600 transition-all shadow-lg"
                 >
@@ -80,7 +80,7 @@ const ViewBookDetail: React.FC<ViewBookDetailProps> = ({ bookId, onNavigate }) =
           <div className="lg:col-span-7">
             <h1 className="text-5xl md:text-6xl font-serif font-black text-stone-900 mb-4">{book.title}</h1>
             <p className="text-xl text-amber-600 font-serif italic mb-10 leading-relaxed">{book.subtitle}</p>
-            
+
             <div className="prose prose-stone max-w-none text-stone-600 text-lg leading-relaxed mb-16 italic">
               <p>"{book.description}"</p>
             </div>

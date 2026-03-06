@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, MessageSquare, BookOpen, Send } from 'lucide-react';
 import Contact from '../components/Contact';
 import { ViewType } from '../App';
+import SEO from '../components/SEO';
 
 interface ViewContactProps {
   onNavigate: (view: ViewType, params?: any) => void;
@@ -32,6 +33,7 @@ const ViewContact: React.FC<ViewContactProps> = ({ onNavigate }) => {
       exit="exit"
       className="pt-32 pb-24 bg-[#fdfcf8] min-h-screen"
     >
+      <SEO title="Contact" description="Reach out to Daniel Blood for speaking engagements, bulk book orders, or to share your reading experience." />
       <div className="container mx-auto px-6">
         <div className="text-center mb-24">
           <h1 className="text-5xl md:text-7xl font-serif font-black text-stone-900 mb-6">Connect</h1>

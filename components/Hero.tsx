@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { AUTHOR_NAME, AUTHOR_PHOTO, AMAZON_STORE_URL } from '../constants';
 import { ViewType } from '../App';
+import MagneticButton from './MagneticButton';
 
 interface HeroProps {
   onNavigate: (view: ViewType, params?: any) => void;
@@ -52,20 +53,24 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-            <button
-              onClick={() => onNavigate('books')}
-              className="px-12 py-6 bg-stone-900 text-white font-black hover:bg-stone-800 transition-all rounded-sm shadow-2xl tracking-[0.2em] text-[10px] uppercase"
-            >
-              Explore the Collection
-            </button>
-            <a
-              href={AMAZON_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-12 py-6 bg-white border border-stone-200 text-stone-900 font-black hover:bg-stone-50 transition-all rounded-sm shadow-sm tracking-[0.2em] text-[10px] uppercase flex items-center justify-center gap-2"
-            >
-              Author Store
-            </a>
+            <MagneticButton>
+              <button
+                onClick={() => onNavigate('books')}
+                className="w-full px-12 py-6 bg-stone-900 text-white font-black hover:bg-stone-800 transition-all rounded-sm shadow-2xl tracking-[0.2em] text-[10px] uppercase block"
+              >
+                Explore the Collection
+              </button>
+            </MagneticButton>
+            <MagneticButton>
+              <a
+                href={AMAZON_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full px-12 py-6 bg-white border border-stone-200 text-stone-900 font-black hover:bg-stone-50 transition-all rounded-sm shadow-sm tracking-[0.2em] text-[10px] uppercase flex items-center justify-center gap-2"
+              >
+                Author Store
+              </a>
+            </MagneticButton>
           </motion.div>
 
           <motion.div variants={itemVariants} className="mt-12 flex items-center justify-center lg:justify-start gap-6 opacity-40">
