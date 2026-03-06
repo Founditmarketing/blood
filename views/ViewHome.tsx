@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import Recommendations from '../components/Recommendations';
 import Blog from '../components/Blog';
@@ -9,13 +10,24 @@ interface ViewHomeProps {
   onNavigate: (view: ViewType, params?: any) => void;
 }
 
+const pageVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  exit: { opacity: 0, y: -10, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
+};
+
 const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
   const latestBook = BOOKS[0];
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <Hero onNavigate={onNavigate} />
-      
+
       {/* Latest Release Spotlight */}
       <section className="py-24 bg-white border-y border-stone-100 overflow-hidden">
         <div className="container mx-auto px-6">
@@ -23,10 +35,10 @@ const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
             <div className="relative">
               <div className="absolute -inset-10 bg-amber-50 rounded-full blur-3xl opacity-40"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-stone-100 rounded-full scale-110"></div>
-              
+
               <div className="relative z-10 max-w-sm mx-auto group">
-                <img 
-                  src={latestBook.coverImage} 
+                <img
+                  src={latestBook.coverImage}
                   alt={latestBook.title}
                   referrerPolicy="no-referrer"
                   crossOrigin="anonymous"
@@ -38,7 +50,7 @@ const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
                 </div>
               </div>
             </div>
-            
+
             <div className="lg:pl-10">
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-[2px] w-8 bg-amber-500"></span>
@@ -50,15 +62,15 @@ const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
               <p className="text-xl text-stone-500 font-serif italic mb-10 leading-relaxed">
                 "{latestBook.description}"
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
+                <button
                   onClick={() => onNavigate('book-detail', { bookId: latestBook.id })}
                   className="px-10 py-5 bg-stone-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-stone-800 transition-all shadow-xl"
                 >
                   Explore Details
                 </button>
-                <a 
+                <a
                   href={latestBook.amazonLink}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -82,21 +94,21 @@ const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
               <p className="text-lg text-stone-600 font-serif leading-loose italic mb-10">
                 "{BIO.split('.')[0]}."
               </p>
-              <button 
+              <button
                 onClick={() => onNavigate('about')}
                 className="text-[10px] font-black uppercase tracking-[0.3em] border-b-2 border-amber-500 pb-2 hover:border-amber-600 hover:text-amber-600 transition-all"
               >
                 Read Full Biography
               </button>
             </div>
-            
+
             <div className="order-1 md:order-2 flex justify-center">
               <div className="relative group">
                 <div className="absolute -inset-4 bg-white shadow-2xl -z-10 group-hover:scale-105 transition-transform duration-700"></div>
                 <div className="w-72 h-72 md:w-96 md:h-96 min-h-[300px] overflow-hidden group-hover:grayscale-0 transition-all duration-1000 bg-stone-200 relative">
-                  <img 
-                    src={AUTHOR_PHOTO} 
-                    alt={AUTHOR_AKA} 
+                  <img
+                    src={AUTHOR_PHOTO}
+                    alt={AUTHOR_AKA}
                     referrerPolicy="no-referrer"
                     crossOrigin="anonymous"
                     className="w-full h-full object-cover relative z-10"
@@ -118,7 +130,7 @@ const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
       <Recommendations onNavigate={onNavigate} />
 
       <Blog />
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, MessageSquare, BookOpen, Send } from 'lucide-react';
 import Contact from '../components/Contact';
 import { ViewType } from '../App';
 
@@ -8,15 +10,34 @@ interface ViewContactProps {
 }
 
 // Fix: Added onNavigate prop and ViewContactProps interface
+const pageVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  exit: { opacity: 0, y: -10, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
+};
+
 const ViewContact: React.FC<ViewContactProps> = ({ onNavigate }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'Speaking Engagement',
+    message: ''
+  });
+
   return (
-    <div className="pt-32 pb-24 bg-stone-50">
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="pt-32 pb-24 bg-[#fdfcf8] min-h-screen"
+    >
       <div className="container mx-auto px-6">
         <div className="text-center mb-24">
           <h1 className="text-5xl md:text-7xl font-serif font-black text-stone-900 mb-6">Connect</h1>
           <p className="text-amber-600 font-black uppercase tracking-[0.5em] text-[10px]">Reach out for speaking or inquiries</p>
         </div>
-        
+
         <div className="grid lg:grid-cols-3 gap-12 mb-24 max-w-6xl mx-auto">
           {[
             { label: "Speaking Engagements", desc: "Book Daniel for historical or spiritual workshops.", icon: "M19 20l-7-7 7-7" },
@@ -35,7 +56,7 @@ const ViewContact: React.FC<ViewContactProps> = ({ onNavigate }) => {
 
         <Contact />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

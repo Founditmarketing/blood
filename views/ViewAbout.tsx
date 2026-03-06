@@ -1,14 +1,27 @@
 import React from 'react';
-import { BIO, AUTHOR_PHOTO, AUTHOR_AKA } from '../constants';
+import { motion } from 'framer-motion';
+import { AUTHOR_NAME, AUTHOR_PHOTO, BIO, AUTHOR_AKA } from '../constants';
 import { ViewType } from '../App';
 
 interface ViewAboutProps {
   onNavigate: (view: ViewType, params?: any) => void;
 }
 
+const pageVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  exit: { opacity: 0, y: -10, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
+};
+
 const ViewAbout: React.FC<ViewAboutProps> = ({ onNavigate }) => {
   return (
-    <div className="pt-32 pb-24">
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="pt-32 pb-24 bg-[#fdfcf8] min-h-screen"
+    >
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center mb-32">
           {/* Author Photo Column */}
@@ -16,15 +29,15 @@ const ViewAbout: React.FC<ViewAboutProps> = ({ onNavigate }) => {
             <div className="relative group max-w-md mx-auto lg:mx-0">
               {/* Decorative background element */}
               <div className="absolute -inset-4 bg-amber-50 rounded-xl blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
-              
+
               {/* Main Image Container */}
               <div className="relative aspect-[4/5] overflow-hidden border-[12px] border-white shadow-2xl bg-stone-100 rounded-sm">
-                <img 
-                  src={AUTHOR_PHOTO} 
-                  alt={AUTHOR_AKA} 
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out" 
+                <img
+                  src={AUTHOR_PHOTO}
+                  alt={AUTHOR_AKA}
+                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
                 />
-                
+
                 {/* Floating Badge */}
                 <div className="absolute -bottom-2 -right-2 bg-stone-900 text-white px-6 py-3 shadow-2xl transform rotate-1">
                   <span className="text-[10px] font-black uppercase tracking-[0.3em] whitespace-nowrap">
@@ -32,7 +45,7 @@ const ViewAbout: React.FC<ViewAboutProps> = ({ onNavigate }) => {
                   </span>
                 </div>
               </div>
-              
+
               {/* Decorative Frame Line */}
               <div className="absolute -top-6 -left-6 w-24 h-24 border-t-2 border-l-2 border-amber-500/30 -z-10"></div>
             </div>
@@ -52,7 +65,7 @@ const ViewAbout: React.FC<ViewAboutProps> = ({ onNavigate }) => {
                 {BIO}
               </p>
             </div>
-            
+
             <div className="mt-12 flex flex-wrap gap-8 items-center border-t border-stone-100 pt-10">
               <div>
                 <h4 className="text-stone-900 font-serif font-bold text-xl italic mb-1">Philosophy</h4>
@@ -70,9 +83,9 @@ const ViewAbout: React.FC<ViewAboutProps> = ({ onNavigate }) => {
         {/* Quote/Philosophy Banner */}
         <section className="bg-stone-900 text-white p-12 md:p-24 relative overflow-hidden mb-32 rounded-sm shadow-2xl">
           <div className="absolute top-0 right-0 p-20 opacity-5 pointer-events-none">
-             <svg className="w-96 h-96" fill="currentColor" viewBox="0 0 24 24">
-               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-             </svg>
+            <svg className="w-96 h-96" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+            </svg>
           </div>
           <div className="max-w-3xl mx-auto text-center relative z-10">
             <h3 className="text-amber-500 font-black uppercase tracking-[0.3em] text-[10px] mb-8">Guided by Faith</h3>
@@ -107,7 +120,7 @@ const ViewAbout: React.FC<ViewAboutProps> = ({ onNavigate }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
