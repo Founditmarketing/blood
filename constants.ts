@@ -10,16 +10,16 @@ export const AUTHOR_AKA = "Vernon Daniel Blood";
  */
 const proxy = (url: string) => `https://images.weserv.nl/?url=${encodeURIComponent(url)}&default=https://via.placeholder.com/400x600?text=Book+Cover`;
 
-const SPIRITUAL_DEV_IMG = "/images/book1.PNG";
+const SPIRITUAL_DEV_IMG = "/images/book2.PNG";
 const SPIRITUAL_DEV_INT1 = "/images/book2.PNG";
 const SPIRITUAL_DEV_INT2 = "/images/IMG_8426.PNG"; // Using available generic interior for now
 
-const MOMS_HISTORY_IMG = "/images/book3.PNG";
-const MOMS_HISTORY_INT1 = "/images/book3.PNG"; // Using cover as interior for now
+const MOMS_HISTORY_IMG = "/images/book4.PNG";
+const MOMS_HISTORY_INT1 = "/images/book4.PNG"; // Using cover as interior for now
 const MOMS_HISTORY_INT2 = "/images/IMG_8426.PNG";
 
-const DADS_HISTORY_IMG = "/images/book4.PNG";
-const DADS_HISTORY_INT1 = "/images/book4.PNG"; // Using cover as interior for now
+const DADS_HISTORY_IMG = "/images/book3.PNG";
+const DADS_HISTORY_INT1 = "/images/book3.PNG"; // Using cover as interior for now
 const DADS_HISTORY_INT2 = "/images/IMG_8426.PNG";
 
 // Master author portrait
