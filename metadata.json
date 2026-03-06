@@ -1,0 +1,7 @@
+{
+  "name": "Daniel Blood - Author Portfolio",
+  "description": "A sophisticated author website for Daniel Blood (Vernon Daniel Blood), featuring his literary works, biography, and an interactive AI-powered reader assistant.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
