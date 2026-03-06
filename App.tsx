@@ -79,7 +79,9 @@ const App: React.FC = () => {
         </main>
 
         {/* Globally Available AI Concierge */}
-        <GeminiChat />
+        <Suspense fallback={null}>
+          <GeminiChat />
+        </Suspense>
 
         <Footer onNavigate={navigateTo} />
       </div>
