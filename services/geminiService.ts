@@ -6,7 +6,7 @@ const getSystemInstruction = () => {
   const bookDetails = BOOKS.map(b => `${b.title}: ${b.subtitle} - ${b.description}`).join("\n\n");
   const recommendationDetails = RECOMMENDATIONS.map(r => `Insight: ${r.question}\nVernon's Response: "${r.quote}"`).join("\n\n");
   const reviewDetails = REVIEWS.map(r => `Reviewer ${r.author} says about ${r.bookId}: "${r.content}"`).join("\n\n");
-  
+
   return `You are a virtual assistant for the author ${AUTHOR_NAME} (also known as ${AUTHOR_AKA}). 
   Your goal is to help fans and readers learn more about Daniel's books on legacy, spiritual development, and personal history. 
   
@@ -39,21 +39,34 @@ const getSystemInstruction = () => {
 };
 
 export class GeminiAssistant {
-  private ai: GoogleGenAI;
-  private chat: Chat;
+  private ai?: GoogleGenAI;
+  private chat?: Chat;
 
   constructor() {
-    // Correctly initialize with process.env.API_KEY directly as per guidelines
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-    this.chat = this.ai.chats.create({
-      model: 'gemini-3-flash-preview',
-      config: {
-        systemInstruction: getSystemInstruction(),
-      },
-    });
+    // Gracefully handle missing keys in Vercel edge environments
+    const key = process.env.API_KEY;
+    if (!key || key === "undefined") {
+      console.warn("Blood Library Archives: AI Concierge API key is not configured in this environment.");
+      return;
+    }
+
+    try {
+      this.ai = new GoogleGenAI({ apiKey: key });
+      this.chat = this.ai.chats.create({
+        model: 'gemini-3-flash-preview',
+        config: {
+          systemInstruction: getSystemInstruction(),
+        },
+      });
+    } catch (e) {
+      console.error("Failed to initialize Google GenAI SDK", e);
+    }
   }
 
   async sendMessage(message: string): Promise<string> {
+    if (!this.chat) {
+      return "The connection to the archives is currently offline. Please contact the administrator to provide the library key.";
+    }
     try {
       const result: GenerateContentResponse = await this.chat.sendMessage({ message });
       return result.text || "I'm sorry, I couldn't process that. Please try again.";
@@ -64,6 +77,10 @@ export class GeminiAssistant {
   }
 
   async *sendMessageStream(message: string) {
+    if (!this.chat) {
+      yield "The connection to the archives is currently offline. Please complete the Vercel configuration by providing the GEMINI_API_KEY environment variable.";
+      return;
+    }
     try {
       const response = await this.chat.sendMessageStream({ message });
       for await (const chunk of response) {
