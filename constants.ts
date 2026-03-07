@@ -23,7 +23,7 @@ const DADS_HISTORY_INT1 = "/images/book3.PNG"; // Using cover as interior for no
 const DADS_HISTORY_INT2 = "/images/IMG_8426.PNG";
 
 // Master author portrait
-export const AUTHOR_PHOTO = "/images/author main image.PNG";
+export const AUTHOR_PHOTO = "/images/new.jpeg";
 export const AMAZON_STORE_URL = "https://www.amazon.com/stores/Vernon-Daniel-Blood/author/B0DP1R44MX";
 export const AMAZON_ABOUT_URL = "https://www.amazon.com/stores/author/B0DP1R44MX/about";
 

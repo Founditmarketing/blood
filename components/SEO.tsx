@@ -12,7 +12,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({
     title,
     description = "A devoted history teacher and author whose life is guided by his passion for serving Jesus and helping others.",
-    image = "/images/author main image.PNG",
+    image = "/images/new.jpeg",
     url = "https://daniel-blood-author.vercel.app"
 }) => {
     const fullTitle = title ? `${title} | ${AUTHOR_NAME}` : `${AUTHOR_NAME} | Author`;
