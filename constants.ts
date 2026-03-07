@@ -10,6 +10,10 @@ export const AUTHOR_AKA = "Vernon Daniel Blood";
  */
 const proxy = (url: string) => `https://images.weserv.nl/?url=${encodeURIComponent(url)}&default=https://via.placeholder.com/400x600?text=Book+Cover`;
 
+const HEALED_TO_REBUILD_IMG = "/images/book1.PNG";
+const HEALED_TO_REBUILD_INT1 = "/images/book1.PNG";
+const HEALED_TO_REBUILD_INT2 = "/images/IMG_8426.PNG";
+
 const SPIRITUAL_DEV_IMG = "/images/book2.PNG";
 const SPIRITUAL_DEV_INT1 = "/images/book2.PNG";
 const SPIRITUAL_DEV_INT2 = "/images/IMG_8426.PNG"; // Using available generic interior for now
@@ -43,6 +47,21 @@ export interface EnhancedBook extends Book {
 }
 
 export const BOOKS: EnhancedBook[] = [
+  {
+    id: "healed-to-rebuild",
+    title: "Healed to Rebuild",
+    subtitle: "A Journey of Restoration",
+    coverImage: HEALED_TO_REBUILD_IMG,
+    images: [HEALED_TO_REBUILD_IMG, HEALED_TO_REBUILD_INT1, HEALED_TO_REBUILD_INT2],
+    rating: 5.0,
+    reviewCount: 0,
+    format: "Paperback",
+    description: "The newly released work exploring the powerful philosophy of being healed to rebuild. A profound look into spiritual restoration, faith, and leaving a lasting legacy.",
+    bioSnippet: "Daniel's core philosophy 'Healed to Rebuild' takes center stage in this powerful new release.",
+    amazonLink: AMAZON_STORE_URL,
+    releaseDate: "2025",
+    genre: "Christian Devotional"
+  },
   {
     id: "spiritual-development",
     title: "Spiritual Development",
