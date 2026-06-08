@@ -1,6 +1,7 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -84,6 +85,7 @@ const App: React.FC = () => {
         </Suspense>
 
         <Footer onNavigate={navigateTo} />
+        <Analytics />
       </div>
     </HelmetProvider>
   );
