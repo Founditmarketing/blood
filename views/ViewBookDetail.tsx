@@ -81,22 +81,24 @@ const ViewBookDetail: React.FC<ViewBookDetailProps> = ({ bookId, onNavigate }) =
             <h1 className="text-5xl md:text-6xl font-serif font-black text-stone-900 mb-4">{book.title}</h1>
             <p className="text-xl text-amber-600 font-serif italic mb-10 leading-relaxed">{book.subtitle}</p>
 
-            <div className="prose prose-stone max-w-none text-stone-600 text-lg leading-relaxed mb-16 italic">
-              <p>"{book.description}"</p>
+            <div className="prose prose-stone max-w-none text-stone-600 text-lg leading-relaxed mb-16">
+              {(book.fullDescription || book.description).split('\n\n').map((para, i) => (
+                <p key={i} className="mb-4">{para}</p>
+              ))}
             </div>
 
             {/* Unique Journal Features */}
             <div className="bg-stone-50 p-10 border-l-4 border-stone-900 mb-16">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-900 mb-8">Journal Specifications</h3>
+              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-900 mb-8">Book Specifications</h3>
               <ul className="grid sm:grid-cols-2 gap-8">
-                {[
+                {(book.specs ?? [
                   "7 x 10 inch generous writing space",
                   "125 pages of premium high-quality paper",
                   "Inspirational guided writing prompts",
                   "Dedicated family history & ancestry sections",
                   "Milestone tracking for future generations",
                   "Faith-based guidance for spiritual legacy"
-                ].map(item => (
+                ]).map(item => (
                   <li key={item} className="flex gap-4 items-start">
                     <span className="w-4 h-4 rounded-full border border-amber-500 flex-shrink-0 mt-1 flex items-center justify-center">
                       <span className="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>

@@ -44,19 +44,40 @@ export interface EnhancedBook extends Book {
   reviewCount: number;
   format: string;
   images: string[];
+  fullDescription?: string;
+  specs?: string[];
 }
 
 export const BOOKS: EnhancedBook[] = [
   {
-    id: "healed-to-rebuild",
-    title: "Healed to Rebuild",
-    subtitle: "A Journey of Restoration",
+    id: "your-will",
+    title: "Your Will",
+    subtitle: "Learning To Ask For What Matters Most",
     coverImage: HEALED_TO_REBUILD_IMG,
     images: [HEALED_TO_REBUILD_IMG, HEALED_TO_REBUILD_INT1, HEALED_TO_REBUILD_INT2],
     rating: 5.0,
     reviewCount: 0,
     format: "Paperback",
-    description: "The newly released work exploring the powerful philosophy of being healed to rebuild. A profound look into spiritual restoration, faith, and leaving a lasting legacy.",
+    description: "Stop asking for what you think you need—and start asking for what God longs to give. Move beyond surface-level prayer and enter a powerful partnership with the purposes of God—one that aligns your heart, builds on Scripture, and bears eternal fruit.",
+    fullDescription: `Stop asking for what you think you need—and start asking for what God longs to give.
+
+Do you ever feel like your prayers are hitting a ceiling? Are you tired of petitions that focus only on temporary comfort, convenience, or crisis? In His Will: Asking for What Matters Most, you will discover that prayer is not a spiritual "last resort," but a powerful partnership with the purposes of God.
+
+This book is an invitation to move beyond the surface and enter the "surrendered asking" that changes eternity.
+
+In this book, you will discover how to:
+• Align Your Heart: Shift from "My will be done" to the power of "Your kingdom come."
+• Pray with Scriptural Authority: Learn why prayers gain momentum when they are rooted in God's character rather than our own wants.
+• Cultivate Eternal Fruit: Focus your petitions on wisdom, love, and spiritual power that impacts the world around you.
+• Build on the Right Foundation: Understand why repentance and a relationship with Jesus are the essential keys to being heard by the Father.
+
+Are you ready to surrender your agenda and lay hold of His? Begin your journey toward a life of powerful, answered prayer today.`,
+    specs: [
+      "159 pages",
+      "Reading age: 12–18 years",
+      "Dimensions: 5 x 0.38 x 8 inches",
+      "Format: Paperback, Kindle"
+    ],
     bioSnippet: "Daniel's core philosophy 'Healed to Rebuild' takes center stage in this powerful new release.",
     amazonLink: AMAZON_STORE_URL,
     releaseDate: "2025",

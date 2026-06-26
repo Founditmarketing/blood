@@ -75,7 +75,7 @@ const ViewBookshelf: React.FC<ViewBookshelfProps> = ({ onNavigate }) => {
               </TiltCard>
               <h3 className="text-2xl font-serif font-bold text-stone-900 mb-2">{book.title}</h3>
               <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400 font-black mb-4">{book.subtitle}</p>
-              <p className="text-stone-600 text-sm leading-relaxed line-clamp-3 italic mb-6">"{book.description}"</p>
+              <p className="text-stone-600 text-sm leading-relaxed line-clamp-3 mb-6">{book.description}</p>
               <div className="flex justify-between items-center border-t border-stone-100 pt-6">
                 <span className="text-[10px] font-black uppercase tracking-widest text-stone-300">{book.genre}</span>
                 <a href={book.amazonLink} target="_blank" rel="noopener noreferrer" className="text-amber-600 text-[10px] font-black uppercase tracking-widest hover:text-amber-700">Shop Now</a>

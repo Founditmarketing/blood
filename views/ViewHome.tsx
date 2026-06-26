@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import Recommendations from '../components/Recommendations';
 import Blog from '../components/Blog';
-import { BOOKS, AUTHOR_PHOTO, AUTHOR_AKA, BIO } from '../constants';
+import { BOOKS } from '../constants';
 import { ViewType } from '../App';
 import SEO from '../components/SEO';
 
@@ -16,6 +16,16 @@ const pageVariants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
   exit: { opacity: 0, y: -10, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
 };
+
+const HEALED_DESCRIPTION = [
+  `"They will rebuild the ancient ruins and restore the places long devastated; they will renew the ruined cities that have been devastated for generations." — Isaiah 61:4`,
+  `At Healed to Rebuild Ministries, we believe that God specializes in restoration. No life is too broken, no heart too wounded, and no past too shattered for His redeeming grace. Our mission is to help people experience the healing power of Jesus Christ so they can be restored, renewed, and rebuilt for His purpose.`,
+  `Many people carry the weight of brokenness caused by sin, painful circumstances, trauma, addiction, rejection, loss, or life's disappointments. These burdens can leave us feeling bound, crushed, and without hope. But the gospel declares that Jesus came "to bind up the brokenhearted... to proclaim freedom for the captives... and comfort all who mourn" (Isaiah 61).`,
+  `Healed to Rebuild Ministries exists to walk alongside individuals on their journey from brokenness to wholeness. Through biblical teaching, discipleship, encouragement, and practical ministry, we help people discover their identity in Christ, experience spiritual healing, break free from the chains of the past, and embrace the life God has prepared for them.`,
+  `God heals us so He can rebuild us to restore a nation. Healing is not the end of the story—it is the beginning of a transformed life that brings hope to others and glory to God. As God restores hearts, He also raises up people who become restorers themselves, rebuilding families, churches, communities, and lives that have been devastated.`,
+  `Whether you are seeking healing, searching for hope, or longing for a deeper relationship with Christ, you are welcome here. Together, we believe that what has been broken can be restored, what has been lost can be redeemed, and what God rebuilds becomes stronger than before.`,
+  `You are not defined by what has broken you—you are defined by the One who is rebuilding you.`,
+];
 
 const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
   const latestBook = BOOKS[0];
@@ -86,44 +96,23 @@ const ViewHome: React.FC<ViewHomeProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* Meet the Author Section */}
+      {/* Healed to Rebuild Section */}
       <section className="py-24 bg-stone-50 overflow-hidden border-b border-stone-100">
         <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <h3 className="text-stone-400 font-black uppercase tracking-[0.4em] text-[10px] mb-4">The Voice Behind the Words</h3>
-              <h4 className="text-4xl font-serif font-black text-stone-900 mb-8">Vernon Daniel Blood</h4>
-              <p className="text-lg text-stone-600 font-serif leading-loose italic mb-10">
-                "{BIO.split('.')[0]}."
-              </p>
-              <button
-                onClick={() => onNavigate('about')}
-                className="text-[10px] font-black uppercase tracking-[0.3em] border-b-2 border-amber-500 pb-2 hover:border-amber-600 hover:text-amber-600 transition-all"
-              >
-                Read Full Biography
-              </button>
+          <div className="max-w-4xl mx-auto">
+            <div className="flex justify-end mb-6">
+              <img
+                src="/images/healed to rebuild transparent.png"
+                alt="Healed to Rebuild Ministries"
+                className="h-24 object-contain"
+              />
             </div>
-
-            <div className="order-1 md:order-2 flex justify-center">
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-white shadow-2xl -z-10 group-hover:scale-105 transition-transform duration-700"></div>
-                <div className="w-72 h-72 md:w-96 md:h-96 min-h-[300px] overflow-hidden group-hover:grayscale-0 transition-all duration-1000 bg-stone-200 relative">
-                  <img
-                    src={AUTHOR_PHOTO}
-                    alt={AUTHOR_AKA}
-                    referrerPolicy="no-referrer"
-                    crossOrigin="anonymous"
-                    className="w-full h-full object-cover relative z-10"
-                  />
-                  {/* Fallback label if network is slow */}
-                  <div className="absolute inset-0 flex items-center justify-center text-stone-400 text-[10px] uppercase font-bold tracking-widest z-0">
-                    Loading Portrait...
-                  </div>
-                </div>
-                <div className="absolute -bottom-10 -left-10 text-stone-200 pointer-events-none select-none">
-                  <span className="text-8xl font-serif italic opacity-30">Daniel Blood</span>
-                </div>
-              </div>
+            <div className="space-y-5">
+              {HEALED_DESCRIPTION.map((para, i) => (
+                <p key={i} className={`leading-relaxed ${i === 0 ? 'font-serif italic text-stone-800 text-lg font-medium' : 'text-stone-600 text-base'}`}>
+                  {para}
+                </p>
+              ))}
             </div>
           </div>
         </div>
